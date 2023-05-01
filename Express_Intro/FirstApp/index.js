@@ -30,6 +30,14 @@ app.get("/dogs", (req, res) => {
   res.send("WOOF!");
 });
 
+app.get("/search", (req, res) => {
+  const { q } = req.query;
+  if (!q) {
+    res.send("NOTHING FOUND IF NOTHING SEARCHED!");
+  }
+  res.send(`<h1>Search Results for: ${q}</h1>`);
+});
+
 app.get("*", (req, res) => {
   res.send(`I don't know that path!`);
 });
