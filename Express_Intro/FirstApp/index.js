@@ -9,6 +9,13 @@ app.get("/", (req, res) => {
   res.send("This is the Homepage!");
 });
 
+app.get("/r/:subreddit/:postId", (req, res) => {
+  const { subreddit, postId } = req.params;
+  res.send(
+    `<h1>Viewing Post ID: ${postId} on the ${subreddit} subreddit </h1>`
+  );
+});
+
 app.post("/cats", (req, res) => {
   res.send(
     "POST REQUEST TO /cats!!!!  THIS IS DIFFERENT THAN A GET REQUEST!!!"
@@ -26,6 +33,9 @@ app.get("/dogs", (req, res) => {
 app.get("*", (req, res) => {
   res.send(`I don't know that path!`);
 });
+
+// /r/SOMETHINGHERE
+
 // /cats => "meow"
 // /dogs => "woof"
 // "/"
